@@ -51,7 +51,7 @@ class ArtWorks {
         } catch (e) {
             const {
                 errors
-            } = e.response?.data;
+            } = e.response?.data || {};
             if (errors?.length > 0) {
                 throw new FatalError(errors.join(", "));
             }
@@ -74,7 +74,7 @@ class ArtWorks {
         } catch (e) {
             const {
                 errors
-            } = e.response?.data;
+            } = e.response?.data || {};
             if (errors?.length > 0) {
                 throw new FatalError(errors.join(", "));
             }
