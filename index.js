@@ -1,4 +1,4 @@
-import axios from "axios";
+const axios = require("axios");
 
 export class FatalError extends Error {
     constructor(message) {
@@ -39,7 +39,7 @@ class ArtWorks {
         try {
             const response = await axios({
                 method: "post",
-                url: getUrl("tasks"),
+                url: this.getUrl("tasks"),
                 headers: {
                     "Content-type": "application/json",
                 },
@@ -67,7 +67,7 @@ class ArtWorks {
         try {
             await axios({
                 method: "post",
-                url: getUrl(`tasks/${id}/cancel`),
+                url: this.getUrl(`tasks/${id}/cancel`),
                 headers: {
                     "Content-type": "application/json",
                 },
@@ -91,7 +91,7 @@ class ArtWorks {
             data
         } = await axios({
             method: "get",
-            url: getUrl(`tasks/${id}`),
+            url: this.getUrl(`tasks/${id}`),
             headers: {
                 "Content-type": "application/json",
             },
