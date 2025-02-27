@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export class FatalError extends Error {
     constructor(message) {
         super(message);
@@ -35,7 +37,7 @@ class ArtWorks {
         const { username, password } = this.options;
 
         try {
-            const response = await httpClient({
+            const response = await axios({
                 method: "post",
                 url: getUrl("tasks"),
                 headers: {
@@ -63,7 +65,7 @@ class ArtWorks {
         const { username, password } = this.options;
         console.debug(`Cancel task ${id}`);
         try {
-            await httpClient({
+            await axios({
                 method: "post",
                 url: getUrl(`tasks/${id}/cancel`),
                 headers: {
@@ -87,7 +89,7 @@ class ArtWorks {
 
         const {
             data
-        } = await httpClient({
+        } = await axios({
             method: "get",
             url: getUrl(`tasks/${id}`),
             headers: {
