@@ -32,7 +32,7 @@ class ArtWorks {
     }
 
     async createTask(payload) {
-        const auth = { username, password };
+        const { username, password } = this.options;
 
         try {
             const response = await httpClient({
@@ -41,7 +41,7 @@ class ArtWorks {
                 headers: {
                     "Content-type": "application/json",
                 },
-                auth,
+                auth: { username, password },
                 data: JSON.stringify(payload),
             });
             const {
@@ -60,7 +60,7 @@ class ArtWorks {
     }
 
     async cancelTask(id) {
-        const auth = { username, password };
+        const { username, password } = this.options;
         console.debug(`Cancel task ${id}`);
         try {
             await httpClient({
@@ -69,7 +69,7 @@ class ArtWorks {
                 headers: {
                     "Content-type": "application/json",
                 },
-                auth
+                auth: { username, password }
             });
         } catch (e) {
             const {
@@ -83,7 +83,7 @@ class ArtWorks {
     }
 
     async checkState(id) {
-        const auth = { username, password };
+        const { username, password } = this.options;
 
         const {
             data
@@ -93,7 +93,7 @@ class ArtWorks {
             headers: {
                 "Content-type": "application/json",
             },
-            auth
+            auth: { username, password }
         });
 
         const {
